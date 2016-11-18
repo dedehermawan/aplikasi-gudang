@@ -3,6 +3,7 @@ package com.hermawan.dede.gudang.controller;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hermawan.dede.gudang.dao.BarangJenisDao;
 import com.hermawan.dede.gudang.entity.BarangJenis;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -30,13 +31,13 @@ public class BarangJenisController {
 
     @RequestMapping(value = "/barangjenis", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void simpanBarangJenis(@RequestBody BarangJenis bj) {
+    public void simpanBarangJenis(@RequestBody @Valid BarangJenis bj) {
         bjd.save(bj);
     }
 
     @RequestMapping(value = "/barangjenis/{kodeBarangJenis}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
-    public void updateBarangJenis(@PathVariable("kodeBarangJenis") String kodeBarangJenis, @RequestBody BarangJenis bj) {
+    public void updateBarangJenis(@PathVariable("kodeBarangJenis") String kodeBarangJenis, @RequestBody @Valid BarangJenis bj) {
         bj.setKodeJenisBarang(kodeBarangJenis);
         bjd.save(bj);
     }

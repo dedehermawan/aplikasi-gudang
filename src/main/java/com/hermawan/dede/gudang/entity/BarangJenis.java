@@ -8,6 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "t_mst_barang_jenis")
@@ -18,6 +21,9 @@ public class BarangJenis {
     private String kodeJenisBarang;
 
     @Column(nullable = false)
+    @NotNull
+    @NotEmpty
+    @Size(max = 150)
     private String namaJenisBarang;
 
     @OneToMany(
