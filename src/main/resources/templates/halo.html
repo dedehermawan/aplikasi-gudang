@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Halo Spring Boot</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <h1>Halo Halaman Spring Boot</h1>
+        <form name="formLogout" th:action="@{/logout}" method="post">
+            <input type="submit" value="Logout" />
+        </form>
+        <ul>
+            <li th:text = "'waktu : ' + ${waktu}" ></li>
+            <li th:text = "'nama : ' + ${nama}" ></li>
+        </ul>
+
+    </body>
+</html>
