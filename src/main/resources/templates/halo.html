@@ -6,8 +6,10 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </head>
-    <body>
+    <body ng-app="myApp">
+
         <h1>Halo Halaman Spring Boot</h1>
+        
         <form name="formLogout" th:action="@{/logout}" method="post">
             <input type="submit" value="Logout" />
         </form>
@@ -16,5 +18,28 @@
             <li th:text = "'nama : ' + ${nama}" ></li>
         </ul>
 
+        <div ng-controller="MainController">
+            {{title}}<br/>
+            {{book.title}}<br/>
+            {{book.author}}<br/>
+            {{book.price| currency}} / {{book.price| rupiah}}<br/>
+            {{book.pubdate| date}}
+            <hr/>
+
+            <div ng-repeat="book in books">
+                {{book.title}} <br/>
+                {{book.author}} <br/>
+                {{book.price| rupiah}} <br/>
+                {{book.pubdate| date}} <br/>
+                {{book.likes}} <button ng-click="likes($index)">Like</button> <br/>
+                <button ng-click="logToConsole($index)">Log</button>
+                <hr/>
+            </div>
+
+        </div>
+        <!--script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script-->
+        <script src="js/angular.min.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/controllers/MainController.js"></script>
     </body>
 </html>
